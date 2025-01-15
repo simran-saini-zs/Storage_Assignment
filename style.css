@@ -1,0 +1,27 @@
+.container{
+    margin: 100px auto auto auto;
+    background-color: beige;
+    border: 2px solid rgb(90, 10, 10);
+    /* height: 500px; */
+    width: 500px;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+}
+form{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    gap: 50px;
+    align-items: center;
+}
+input{
+    padding: 10px;
+}
+button{
+    background-color: beige;
+    border: 2px solid rgb(90, 10, 10);
+    width: 100px;
+    padding: 10px;
+}

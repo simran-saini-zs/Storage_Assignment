@@ -6,7 +6,6 @@ let body = document.querySelector('body');
 let theme_selector = document.querySelector('.theme-selector');
 let submit_btn = document.querySelector('.submit');
 
-
 function setLocalStorage()
 {
     let name = InputName.value;
@@ -33,7 +32,7 @@ function setTheme()
 {
     if(document.cookie)
     {
-        if(document.cookie.split(' ')[0].split('=')[1].toLowerCase() == 'black')
+        if(document.cookie.split(' ')[0].split('=')[1].toLowerCase() == 'dark')
         {
             body.style.backgroundColor = 'black';
         }
@@ -45,10 +44,12 @@ function setTheme()
 }
 
 setTheme()
+
 function createTheme()
 {
     let inputele = document.createElement('input');
     inputele.classList.add('theme');
+    inputele.placeholder = "Write dark or light";
     form.appendChild(inputele);
     let buttonele = document.createElement('button');
     buttonele.innerHTML = "Submit";
@@ -66,7 +67,9 @@ function setCookie()
     date.setDate(date.getDate() + 7);
     let expiry = date.toGMTString();
     document.cookie = `theme = ${theme} expires = ${expiry} path = /`;
+    return InputTheme;
 }
+
 theme_selector.addEventListener('click',(event)=>{
     event.preventDefault();
    let ele = document.querySelector('.theme');
@@ -75,16 +78,12 @@ theme_selector.addEventListener('click',(event)=>{
     theme_btn = createTheme();
     if(theme_btn)
     {
-        console.log(document.cookie);
         theme_btn.addEventListener('click',(event)=>{
         event.preventDefault();
-        setCookie();
+        let InputTheme = setCookie();
         setTheme();
-        setTimeout(()=>{
-            form.removeChild(theme_btn);
-            form.removeChild(InputTheme);
-        },500);
-
+        form.removeChild(theme_btn);
+        form.removeChild(InputTheme);
         })
     }        
    }
